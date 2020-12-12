@@ -14,26 +14,18 @@ public class RxJava1DinnerTime {
 
     Observable<Void> dinnerTimeByMood(String mood) {
         return cookMealByMood(mood)
-                .doOnCompleted(() -> System.out.println("!!! completed1"))
                 .flatMap(x -> setTheTable())
-                .doOnCompleted(() -> System.out.println("!!! completed2"))
                 .flatMap(x -> eat())
-                .doOnCompleted(() -> System.out.println("!!! completed3"))
                 .flatMap(x -> clearTheTable())
-                .doOnCompleted(() -> System.out.println("!!! completed4"))
                 .map(x -> null);
     }
 
     Observable<Void> dinnerTimeByMoodEmptyEvent(String mood) {
         return cookMealByMoodWithEmpty(mood)
                 .defaultIfEmpty("defaultFood")
-                .doOnCompleted(() -> System.out.println("!!! completed1"))
                 .flatMap(x -> setTheTable())
-                .doOnCompleted(() -> System.out.println("!!! completed2"))
                 .flatMap(x -> eat())
-                .doOnCompleted(() -> System.out.println("!!! completed3"))
                 .flatMap(x -> clearTheTable())
-                .doOnCompleted(() -> System.out.println("!!! completed4"))
                 .map(x -> null);
     }
 
