@@ -13,7 +13,8 @@ public class RxJavaInteropExamples {
     Single<List<String>> rxJava1ObservableToRxJava2Single() {
         Observable<List<String>> sportsObservable = Observable.just("soccer", "tennis", "padel").toList();
 
-//      Single.fromObservable(RxJavaInterop.toV2Observable(sportsObservable));
+        // alternative way to convert to io.reactivex.Single
+        // Single.fromObservable(RxJavaInterop.toV2Observable(sportsObservable));
         return RxJavaInterop.toV2Single(sportsObservable.toSingle());
     }
 
